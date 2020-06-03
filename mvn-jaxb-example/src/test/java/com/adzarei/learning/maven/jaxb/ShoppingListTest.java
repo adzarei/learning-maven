@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ShoppingListTest {
+public class ShoppingListTest {
 
     @Test
-    public void main() {
+    public void testProduct() {
         Product p1 = new Product();
         p1.setProductDescription("Milk");
         p1.setProductId(1);
