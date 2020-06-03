@@ -14,6 +14,7 @@
         <module>mvn-deploy-example</module>
         <module>mvn-clean-example</module>
         <module>mvn-site-example</module>
+        <module>mvn-jaxb-example</module>
     </modules>
 
     <properties>
