@@ -9,25 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mvn-clean-example</artifactId>
-
+    <artifactId>mvn-integrationtest-example</artifactId>
 
     <build>
         <plugins>
             <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.1.0</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>3.0.0-M4</version>
                 <executions>
                     <execution>
-                        <!--Forces auto-clean at initialize phase-->
-                        <id>ato-clean</id>
-                        <phase>initialize</phase>
                         <goals>
-                            <goal>clean</goal>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
+
 </project>
