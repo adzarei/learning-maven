@@ -75,6 +75,9 @@
                 <artifactId>maven-site-plugin</artifactId>
                 <version>3.7.1</version>
             </plugin>
+            <!-- Plugin that generates .flattened-pom.xml where ${revision} is substituted for its value.} -->
+            <!-- Important to use when module is uploaded to maven/nexus} -->
+            <!-- only works on Maven 3.5+ -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>flatten-maven-plugin</artifactId>
@@ -99,8 +102,39 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Plugin used to enforce ENV check rules.-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <executions>
+                    <execution>
+                        <id>enforce-env-requirements</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <!-- Use WARN level if the build can finish successfully with a warning. -->
+                                    <level>WARN</level>
+                                    <!-- version 1.9+ is allowed -->
+                                    <version>[1.8,)</version>
+                                </requireJavaVersion>
+                                <requireMavenVersion>
+                                    <level>WARN</level>
+                                    <version>[3.5,)</version>
+                                </requireMavenVersion>
+                                <requireOS>
+                                    <level>WARN</level>
+                                    <family>unix</family>
+                                </requireOS>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
-
-
 </project>
